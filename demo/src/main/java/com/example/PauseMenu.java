@@ -5,10 +5,13 @@ import java.awt.*;
 public class PauseMenu extends JDialog {
 
     public PauseMenu(JFrame parent, PicPuzzle game) {
+        
         super(parent, "Game Paused", true);
+        SoundManager.playSound("GameMenu");
 
         setUndecorated(true); 
         setSize(350, 420);
+        setBackground(new Color(19,5,38, 190)); 
         setLocationRelativeTo(parent); // Center the dialog on the game window
 
         // Panel to hold buttons
@@ -20,7 +23,11 @@ public class PauseMenu extends JDialog {
         resumeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         resumeButton.setFocusable(false);
         resumeButton.setFont(new Font("Comic Sans",Font.BOLD,20));
+        resumeButton.setOpaque(false);
+        resumeButton.setContentAreaFilled(false);   
+        resumeButton.setForeground(Color.WHITE);
         resumeButton.addActionListener(e -> {
+            SoundManager.playSound("GameMenu");
             dispose();
             game.resumeGame();
         });
@@ -30,7 +37,11 @@ public class PauseMenu extends JDialog {
         restartButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         restartButton.setFocusable(false);
         restartButton.setFont(new Font("Comic Sans",Font.BOLD,20));
+        restartButton.setOpaque(false);
+        restartButton.setContentAreaFilled(false);   
+        restartButton.setForeground(Color.WHITE);
         restartButton.addActionListener(e -> { 
+            SoundManager.playSound("GameMenu");
             game.restartGame();
             dispose();  
         });
@@ -40,7 +51,11 @@ public class PauseMenu extends JDialog {
         homeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         homeButton.setFocusable(false);
         homeButton.setFont(new Font("Comic Sans",Font.BOLD,20));
+        homeButton.setOpaque(false);
+        homeButton.setContentAreaFilled(false);   
+        homeButton.setForeground(Color.WHITE);
         homeButton.addActionListener(e -> {
+            SoundManager.playSound("GameMenu");
             parent.dispose();
             game.stopTimer();
             GameMenu gameMenu = new GameMenu();
@@ -57,6 +72,7 @@ public class PauseMenu extends JDialog {
         panel.add(Box.createVerticalGlue());
 
         panel.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.lightGray));
+        panel.setBackground(new Color(19,5,38, 0)); 
         add(panel);
 
         setVisible(true);

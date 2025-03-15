@@ -23,6 +23,7 @@ public class Levels extends JDialog implements ActionListener{
             super(parent, "Game Difficulty", true);
             this.p = p; //this almost sent me into a psychosis
             setUndecorated(true); 
+            setBackground(new Color(19,5,38, 190)); 
             setLayout(new BorderLayout());
             setSize(350, 420);
     
@@ -36,41 +37,42 @@ public class Levels extends JDialog implements ActionListener{
             topPanel = new JPanel(new BorderLayout());
             topPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
             topPanel.add(close, BorderLayout.EAST);
+            topPanel.setBackground(new Color(19,5,38, 36)); 
     
             btn1 = new JButton("    LEVEL 1    ");
             btn1.setFont(new Font("Comic Sans",Font.BOLD,20));
             btn1.addActionListener(this);
             btn1.setFocusable(false);
-            btn1.setBackground(Color.WHITE);
-            btn1.setOpaque(true);
-       
-            
+            btn1.setOpaque(false);
+            btn1.setContentAreaFilled(false);   
+            btn1.setForeground(Color.WHITE);
     
             btn2 = new JButton("    LEVEL 2    ");
             btn2.setFont(new Font("Comic Sans",Font.BOLD,20));
             btn2.addActionListener(this);
             btn2.setFocusable(false);
             btn2.setEnabled(false);
-            btn2.setBackground(Color.WHITE);
-            btn2.setOpaque(true);
-      
+            btn2.setOpaque(false);
+            btn2.setContentAreaFilled(false);   
+            btn2.setForeground(Color.WHITE);
     
             btn3 = new JButton("    LEVEL 3    ");
             btn3.setFont(new Font("Comic Sans",Font.BOLD,20));
             btn3.addActionListener(this);
             btn3.setFocusable(false);
             btn3.setEnabled(false);
-            btn3.setBackground(Color.WHITE);
-            btn3.setOpaque(true);
+            btn3.setOpaque(false);
+            btn3.setContentAreaFilled(false);   
+            btn3.setForeground(Color.WHITE);
           
-
             btn4 = new JButton("    LEVEL 4    ");
             btn4.setFont(new Font("Comic Sans",Font.BOLD,20));
             btn4.addActionListener(this);
             btn4.setFocusable(false);
             btn4.setEnabled(false);
-            btn4.setBackground(Color.WHITE);
-            btn4.setOpaque(true);
+            btn4.setOpaque(false);
+            btn4.setContentAreaFilled(false);   
+            btn4.setForeground(Color.WHITE);
          
 
             btn5 = new JButton("    LEVEL 5    ");
@@ -78,13 +80,14 @@ public class Levels extends JDialog implements ActionListener{
             btn5.addActionListener(this);
             btn5.setFocusable(false);
             btn5.setEnabled(false);
-            btn5.setBackground(Color.WHITE);
-            btn5.setOpaque(true);
+            btn5.setOpaque(false);
+            btn5.setContentAreaFilled(false);   
+            btn5.setForeground(Color.WHITE);
            
     
             centerPanel = new JPanel();
             centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
-            centerPanel.setBackground(Color.white);
+            centerPanel.setBackground(new Color(19,5,38, 0)); 
             btn1.setAlignmentX(JPanel.CENTER_ALIGNMENT);
             btn2.setAlignmentX(JPanel.CENTER_ALIGNMENT);
             btn3.setAlignmentX(JPanel.CENTER_ALIGNMENT);
@@ -109,8 +112,8 @@ public class Levels extends JDialog implements ActionListener{
             mainPanel.add(topPanel, BorderLayout.NORTH);
             mainPanel.add(centerPanel, BorderLayout.CENTER);
 
-            mainPanel.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-            mainPanel.setBackground(Color.pink);
+            mainPanel.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
+            mainPanel.setBackground(new Color(19,5,38, 0)); 
 
             getContentPane().setBackground(Color.BLUE);
             add(mainPanel);
@@ -140,6 +143,7 @@ public class Levels extends JDialog implements ActionListener{
     // the only function is display because the effect is still the same even with more function
     @Override
     public void actionPerformed(ActionEvent e) {
+        SoundManager.playSound("GameMenu");
         if (e.getSource() == btn1) {
             PicPuzzle p1 = new PicPuzzle();
             p1.getClass();

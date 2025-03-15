@@ -1,22 +1,10 @@
 package com.example;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+
 
 public class GameMenu extends JFrame implements ActionListener{
 
@@ -28,7 +16,9 @@ public class GameMenu extends JFrame implements ActionListener{
 
     GameMenu() {
 
-        ImageIcon img = new ImageIcon("demo\\src\\resources\\images\\logo1.png");
+        SoundManager.playBackgroundMusic();
+
+        ImageIcon img = new ImageIcon("demo\\src\\resources\\images\\logo.png");
         setIconImage(img.getImage());
 
         setTitle("PicPuzzle");
@@ -107,10 +97,6 @@ public class GameMenu extends JFrame implements ActionListener{
         backgroundPanel.add(mainPanel, BorderLayout.CENTER);
         setContentPane(backgroundPanel);
 
-        // var image = new JLabel(new ImageIcon("demo\\src\\resources\\images\\gifpic.gif"));
-        // image.setBounds(0, 0, 1925, 1080);
-        // add(image);
-
         setSize(1925,1080);
         setLocationRelativeTo(null);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -149,22 +135,28 @@ public class GameMenu extends JFrame implements ActionListener{
     
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==btn){
-            Levels g = new Levels(this, null); 
-            g.display(true);
-            this.setVisible(false);
-        } else if (e.getSource()==btn2){
-            HowToPlay h = new HowToPlay(this);
-            h.display();
-        } else if (e.getSource()==btn3){
-            Settings s = new Settings(this, this);
-            s.display();
-        } else if (e.getSource()==info){
-            Info i = new Info(this);
-            i.display();
-        }
+public void actionPerformed(ActionEvent e) {
+    if(e.getSource() == btn) {
+        SoundManager.playSound("PlayGame"); 
+        Levels g = new Levels(this, null); 
+        g.display(true);
+        this.setVisible(false);
+    } else if (e.getSource() == btn2) {
+        SoundManager.playSound("GameMenu"); 
+        HowToPlay h = new HowToPlay(this);
+        h.display();
+    } else if (e.getSource() == btn3) { 
+        SoundManager.playSound("GameMenu"); 
+        new Settings(this, this).setVisible(true); 
+    } else if (e.getSource() == info) {
+        SoundManager.playSound("GameMenu"); 
+        Info i = new Info(this);
+        i.display();
     }
+}
+
 
    
 }
+
+

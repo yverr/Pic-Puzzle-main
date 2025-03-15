@@ -1,15 +1,7 @@
 package com.example;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+
+import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
@@ -27,14 +19,12 @@ public class PicPuzzle implements ActionListener{
     JPanel mainPanel, topPanel, centerPanel, leftPanel, rightPanel, bottomPanel;
     JButton icon, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, picture;
     int moveCount = 0;
-    ImageIcon background;
     private Timer timer;
     private int secondsElapsed = 0;
     private final JLabel timerLabel;
     private final JButton pauseButton;
     private final JLabel statusLabel;
     private final Levels gameDifficulty;
-    
 
     Icon star;
     //puzzle set 1
@@ -79,27 +69,31 @@ public class PicPuzzle implements ActionListener{
     
     public PicPuzzle(){
 
-        ImageIcon img = new ImageIcon("demo\\src\\resources\\images\\logo1.png");
-        frm.setIconImage(img.getImage());
-
-
         gameDifficulty = new Levels(frm, this);
+
+        ImageIcon img = new ImageIcon("demo\\src\\resources\\images\\logo.png");
+        frm.setIconImage(img.getImage());
 
         star = icon8;
 
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
         mainPanel.setBackground(Color.RED);
+        mainPanel.setBackground(new Color(0,0,0, 0)); 
 
         lbl1 = new JLabel("Click for change icon ->");
         lbl1.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        lbl1.setForeground(Color.WHITE);
+
         lbl2 = new JLabel("Click for change picture ↑");
         lbl2.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        lbl2.setForeground(Color.WHITE);
 
         icon = new JButton(icon8);
         icon.setPreferredSize(new Dimension(120, 120));
 
         var topWrapper = new JPanel(new GridBagLayout());
+        topWrapper.setBackground(new Color(0,0,0, 0)); 
         topWrapper.add(lbl1);
 
         pauseButton = new JButton("❚❚");
@@ -107,13 +101,16 @@ public class PicPuzzle implements ActionListener{
         pauseButton.setPreferredSize(new Dimension(120, 120));
         pauseButton.addActionListener(e -> showPauseMenu());
         pauseButton.setFocusable(false);
-
+        pauseButton.setContentAreaFilled(false);  
+        pauseButton.setOpaque(false);  
+        pauseButton.setForeground(Color.WHITE);
 
         topPanel = new JPanel(new BorderLayout());
         topPanel.setBorder(BorderFactory.createEmptyBorder(15,80,0,80));
         topPanel.add(topWrapper, BorderLayout.CENTER);
         topPanel.add(pauseButton, BorderLayout.WEST);
         topPanel.add(icon, BorderLayout.EAST);
+        topPanel.setBackground(new Color(19,5,38)); 
 
         //buttons
         btn1 = new JButton(icon1); btn2 = new JButton(icon2); btn3 = new JButton(icon3); btn4 = new JButton(icon4); btn5 = new JButton(icon5);
@@ -121,11 +118,13 @@ public class PicPuzzle implements ActionListener{
         
         picture = new JButton(pic);
         picture.setPreferredSize(new Dimension(854, 854));
+        picture.setToolTipText("Puzzle Completed"); 
     
         leftPanel = new JPanel();
         leftPanel.setLayout(new GridLayout(3, 3, -2, -2));
         leftPanel.setPreferredSize(new Dimension(200, 200));
         leftPanel.setBorder(BorderFactory.createEmptyBorder(35,80,10,70));
+        leftPanel.setBackground(new Color(0,0,0, 0));
 
         leftPanel.add(btn1); leftPanel.add(btn2); leftPanel.add(btn3);
         leftPanel.add(btn4); leftPanel.add(btn5); leftPanel.add(btn6);
@@ -133,47 +132,47 @@ public class PicPuzzle implements ActionListener{
 
         rightPanel = new JPanel();
         rightPanel.setLayout(new BorderLayout());
+        rightPanel.setBackground(new Color(0,0,0, 0)); 
         rightPanel.setBorder(BorderFactory.createEmptyBorder(35,70,10,80));
         rightPanel.add(picture, BorderLayout.CENTER);
 
         //wrapping the text para hindi siya mag compress sa baba(idk ayaw niya mapunta sa taas pag wala wrapper and gridbaglayout)
         // var leftWrapper = new JPanel(new GridBagLayout());
-        JPanel rightWrapper = new JPanel(new GridBagLayout());
-
+        
         moveLabel = new JLabel("Moves: 0");
+        moveLabel.setForeground(Color.WHITE);
+
         timerLabel = new JLabel("Time: 00:00");
+        timerLabel.setForeground(Color.WHITE);
+        
         timer = new Timer(1000, e -> updateTimer()); 
 
         statusLabel = new JLabel("Time: 00:00   Moves: 0 ");
         statusLabel.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        statusLabel.setForeground(Color.WHITE);
+
+        JPanel rightWrapper = new JPanel(new GridBagLayout());
+        rightWrapper.setBackground(new Color(0,0,0, 0)); 
+        rightWrapper.add(lbl2);
 
         bottomPanel = new JPanel();
         bottomPanel.setLayout(new BorderLayout());
-        rightWrapper.add(lbl2);
-        bottomPanel.add(statusLabel, BorderLayout.WEST); bottomPanel.add(rightWrapper, BorderLayout.EAST);
+        bottomPanel.add(statusLabel, BorderLayout.WEST);
+        bottomPanel.add(rightWrapper, BorderLayout.EAST);
         bottomPanel.setBorder(BorderFactory.createEmptyBorder(0,80,30,80));
+        bottomPanel.setBackground(new Color(19,5,38)); 
 
         centerPanel = new JPanel();
         centerPanel.setLayout(new GridLayout(1, 2));
-        centerPanel.add(leftPanel); centerPanel.add(rightPanel); centerPanel.add(bottomPanel);
+        centerPanel.add(leftPanel); centerPanel.add(rightPanel);
+        centerPanel.setBackground(new Color(0,0,0, 0)); 
         
         mainPanel.add(topPanel, BorderLayout.NORTH); mainPanel.add(centerPanel, BorderLayout.CENTER); mainPanel.add(bottomPanel, BorderLayout.SOUTH);
-
-        JPanel backgroundPanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                ImageIcon background = new ImageIcon("demo\\src\\resources\\images\\gamebackground.png");
-                g.drawImage(background.getImage(), 0, 0, getWidth(), getHeight(), this);
-            }
-        };
-
-        backgroundPanel.setLayout(new BorderLayout());
-        backgroundPanel.add(mainPanel, BorderLayout.CENTER);
         
-        frm.getContentPane().add(backgroundPanel);
+        frm.getContentPane().add(mainPanel);
 
         frm.setTitle("PicPuzzle");
+        frm.setBackground(new Color(19,5,38)); 
         frm.setResizable(true);
         frm.setLocation(0, 0);
         frm.setSize(1925,1080);
@@ -203,6 +202,7 @@ public class PicPuzzle implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        SoundManager.playSound("Buttons");
 
         if (!timer.isRunning()) startTheTimer(); 
 
@@ -344,25 +344,25 @@ public class PicPuzzle implements ActionListener{
         // changes the set of puzzle pieces to the next set of pieces.
         if(e.getSource()==picture){
             Icon s1 = picture.getIcon();   
-            if(s1==pic && checkPuzzleSolved()){
+            if(s1==pic ){
                 currentLevel++;
                 picture.setIcon(pic2); icon.setIcon(icon15); star = icon.getIcon();
                 btn1.setIcon(icon10); btn2.setIcon(icon11); btn3.setIcon(icon12);
                 btn4.setIcon(icon13); btn5.setIcon(icon14); btn6.setIcon(icon15);
                 btn7.setIcon(icon16); btn8.setIcon(icon17); btn9.setIcon(icon18);   
-            } else if(s1==pic2 && checkPuzzleSolved()){
+            } else if(s1==pic2 ){
                 currentLevel++;
                 picture.setIcon(pic3); icon.setIcon(icon20); star = icon.getIcon(); 
                 btn1.setIcon(icon19); btn2.setIcon(icon20); btn3.setIcon(icon21);
                 btn4.setIcon(icon22); btn5.setIcon(icon23); btn6.setIcon(icon24);
                 btn7.setIcon(icon25); btn8.setIcon(icon26); btn9.setIcon(icon27); 
-            } else if(s1==pic3 && checkPuzzleSolved()){
+            } else if(s1==pic3 ){
                 currentLevel++;
                 picture.setIcon(pic4); icon.setIcon(icon32); star = icon.getIcon();
                 btn1.setIcon(icon28); btn2.setIcon(icon29); btn3.setIcon(icon30);
                 btn4.setIcon(icon31); btn5.setIcon(icon32); btn6.setIcon(icon33);
                 btn7.setIcon(icon34); btn8.setIcon(icon35); btn9.setIcon(icon36); 
-            } else if(s1==pic4 && checkPuzzleSolved()){
+            } else if(s1==pic4 ){
                 currentLevel++;
                 picture.setIcon(pic5); icon.setIcon(icon44); star = icon.getIcon();
                 btn1.setIcon(icon37); btn2.setIcon(icon38); btn3.setIcon(icon39);
@@ -372,6 +372,8 @@ public class PicPuzzle implements ActionListener{
                 stopTimer();
                 int minutes = secondsElapsed / 60;
                 int seconds = secondsElapsed % 60;
+                SoundManager.stopBackgroundMusic();
+                VideoPlayer.playVideo();
                 JOptionPane.showMessageDialog(frm, "You solved all the puzzles!\nFinal Time: " + String.format("%02d:%02d", minutes, seconds) + "\nFinal Moves: " + moveCount, 
                 "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
                 frm.dispose();

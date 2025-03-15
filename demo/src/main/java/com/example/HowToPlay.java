@@ -28,14 +28,17 @@ public class HowToPlay extends JDialog{
 
         setUndecorated(true); //on everyones soul this dialog box looked like ass without this sht
         setLayout(new BorderLayout());
+        setBackground(new Color(19,5,38, 190)); 
         setSize(390, 490);
 
         title = new JLabel("How To Play");
         title.setFont(new Font("Comic Sans", Font.BOLD, 20));
+        title.setForeground(Color.WHITE);
 
         topPanel = new JPanel();
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
         topPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+        topPanel.setBackground(new Color(19,5,38, 36)); 
 
         title.setAlignmentX(JPanel.CENTER_ALIGNMENT);
         topPanel.add(title, BorderLayout.CENTER);
@@ -64,13 +67,14 @@ public class HowToPlay extends JDialog{
         label = new JLabel("<html>" + instructions.replaceAll("\n", "<br>") + "</html>");
         label.setFont(new Font("Arial", Font.PLAIN, 16));
         label.setHorizontalAlignment(SwingConstants.LEFT);
+        label.setForeground(Color.WHITE);
 
         // this.add(label, BorderLayout.CENTER);
 
         panel = new JPanel(new BorderLayout());
         panel.add(label, BorderLayout.NORTH);
+        panel.setBackground(new Color(19,5,38, 0)); 
 
-         
         Border border = BorderFactory.createLineBorder(Color.gray, 2);
         panel.setBorder(border); 
 
@@ -81,14 +85,15 @@ public class HowToPlay extends JDialog{
 
         closePanel = new JPanel();
         closePanel.add(close);
+        closePanel.setBackground(new Color(19,5,38, 0)); 
 
-        panel.setBorder(BorderFactory.createEmptyBorder(10, 5, 15, 5));
-        closePanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 18, 15, 5));
+        closePanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 15, 0));
 
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
-        mainPanel.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.lightGray));
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(8, 18, 2, 2));
+        mainPanel.setBackground(new Color(19,5,38, 0)); 
+        mainPanel.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
 
         mainPanel.add(topPanel, BorderLayout.NORTH);
         mainPanel.add(panel, BorderLayout.CENTER);
