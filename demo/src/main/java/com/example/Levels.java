@@ -74,7 +74,6 @@ public class Levels extends JDialog implements ActionListener{
             btn4.setContentAreaFilled(false);   
             btn4.setForeground(Color.WHITE);
          
-
             btn5 = new JButton("    LEVEL 5    ");
             btn5.setFont(new Font("Comic Sans",Font.BOLD,20));
             btn5.addActionListener(this);
@@ -84,7 +83,6 @@ public class Levels extends JDialog implements ActionListener{
             btn5.setContentAreaFilled(false);   
             btn5.setForeground(Color.WHITE);
            
-    
             centerPanel = new JPanel();
             centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
             centerPanel.setBackground(new Color(19,5,38, 0)); 

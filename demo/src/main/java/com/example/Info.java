@@ -12,8 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
-
 
 public class Info extends JDialog{
 
@@ -70,7 +68,7 @@ public class Info extends JDialog{
 
                 Thank you for playing!
 
-            """; //hindi pa open source LOL 
+            """; 
 
         label = new JLabel("<html>" + instructions.replaceAll("\n", "<br>") + "</html>");
         label.setFont(new Font("Arial", Font.PLAIN, 16));

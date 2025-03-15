@@ -344,25 +344,25 @@ public class PicPuzzle implements ActionListener{
         // changes the set of puzzle pieces to the next set of pieces.
         if(e.getSource()==picture){
             Icon s1 = picture.getIcon();   
-            if(s1==pic ){
+            if(s1==pic && checkPuzzleSolved()){
                 currentLevel++;
                 picture.setIcon(pic2); icon.setIcon(icon15); star = icon.getIcon();
                 btn1.setIcon(icon10); btn2.setIcon(icon11); btn3.setIcon(icon12);
                 btn4.setIcon(icon13); btn5.setIcon(icon14); btn6.setIcon(icon15);
                 btn7.setIcon(icon16); btn8.setIcon(icon17); btn9.setIcon(icon18);   
-            } else if(s1==pic2 ){
+            } else if(s1==pic2 && checkPuzzleSolved()){
                 currentLevel++;
                 picture.setIcon(pic3); icon.setIcon(icon20); star = icon.getIcon(); 
                 btn1.setIcon(icon19); btn2.setIcon(icon20); btn3.setIcon(icon21);
                 btn4.setIcon(icon22); btn5.setIcon(icon23); btn6.setIcon(icon24);
                 btn7.setIcon(icon25); btn8.setIcon(icon26); btn9.setIcon(icon27); 
-            } else if(s1==pic3 ){
+            } else if(s1==pic3 && checkPuzzleSolved()){
                 currentLevel++;
                 picture.setIcon(pic4); icon.setIcon(icon32); star = icon.getIcon();
                 btn1.setIcon(icon28); btn2.setIcon(icon29); btn3.setIcon(icon30);
                 btn4.setIcon(icon31); btn5.setIcon(icon32); btn6.setIcon(icon33);
                 btn7.setIcon(icon34); btn8.setIcon(icon35); btn9.setIcon(icon36); 
-            } else if(s1==pic4 ){
+            } else if(s1==pic4 && checkPuzzleSolved()){
                 currentLevel++;
                 picture.setIcon(pic5); icon.setIcon(icon44); star = icon.getIcon();
                 btn1.setIcon(icon37); btn2.setIcon(icon38); btn3.setIcon(icon39);

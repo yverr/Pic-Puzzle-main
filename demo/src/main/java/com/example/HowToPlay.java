@@ -44,25 +44,25 @@ public class HowToPlay extends JDialog{
         topPanel.add(title, BorderLayout.CENTER);
 
         String instructions = """
-                              <b>Instructions:</b>
-                                1. Click the Play Game button and proceed to 
-                                level 1 to start the game.
-                                2. Click the top right icon button to switch between
-                                puzzle piece
-                                3. Using the reference picture on the right, solve 
-                                the puzzle
-                                4. Solve the puzzle with less moves as much as 
-                                possible.
-                                5. Goodluck and have fun!
-                              
-                              <b>Navigation:</b>
-                                - Click the '<b>!</b>' button in the Game menu's top right
-                               corner to view game information.
-                                - Click the '<b>Play Game</b>' button to choose levels:
-                               <i>[Level 1], [Level 2], [Level 3], [Level 4], [Level 5]</i>. 
-                               Only Level 1 can be unlocked first, so you must 
-                               complete it to unlock the other levels!
-                                - Click the '<b>Settings</b>' to change [-]""";
+          <b>Instructions:</b>
+            1. Click the Play Game button and proceed to 
+            level 1 to start the game.
+            2. Click the top right icon button to switch between
+            puzzle piece
+            3. Using the reference picture on the right, solve 
+            the puzzle
+            4. Solve the puzzle with less moves as much as 
+            possible.
+            5. Goodluck and have fun!
+          
+          <b>Navigation:</b>
+            - Click the '<b>!</b>' button in the Game menu's top right
+            corner to view game information.
+            - Click the '<b>Play Game</b>' button to choose levels:
+            <i>[Level 1], [Level 2], [Level 3], [Level 4], [Level 5]</i>. 
+            Only Level 1 can be unlocked first, so you must 
+            complete it to unlock the other levels!
+            - Click the '<b>Settings</b>' to change [-]""";
 
         label = new JLabel("<html>" + instructions.replaceAll("\n", "<br>") + "</html>");
         label.setFont(new Font("Arial", Font.PLAIN, 16));
