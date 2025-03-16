@@ -86,7 +86,10 @@ public class Info extends JDialog{
         close = new JButton("Close");
         close.setPreferredSize(new Dimension(80, 30));
         close.setFocusPainted(false);
-        close.addActionListener(e -> this.dispose());
+        close.setOpaque(false);
+        close.setContentAreaFilled(false);   
+        close.setForeground(Color.WHITE);
+        close.addActionListener(e -> close());
 
         closePanel = new JPanel();
         closePanel.add(close);
@@ -110,6 +113,11 @@ public class Info extends JDialog{
 
     public void display(){
         this.setVisible(true);
+    }
+
+    private void close() {
+        SoundManager.playSound("GameMenu");
+        this.dispose();
     }
 
 }

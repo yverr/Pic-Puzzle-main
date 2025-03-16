@@ -1,13 +1,25 @@
 package com.example;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class Settings extends JDialog {
     private JButton volumeButton, themeButton, closeButton;
+    private JButton languageButton;
     
     public Settings(JFrame parent, GameMenu gameMenu) {
-        super(parent, "Settings", true);
+        super(parent, "Settings" , true);
+
         setSize(370, 450);
         setLocationRelativeTo(parent);
         setUndecorated(true);
@@ -26,10 +38,6 @@ public class Settings extends JDialog {
         gbc.gridy = 0;
         panel.add(volumeButton, gbc);
 
-        themeButton = createNeonButton("THEME: DARK", cyberFont);
-        themeButton.addActionListener(e -> toggleTheme());
-        gbc.gridy = 1;
-        panel.add(themeButton, gbc);
 
         closeButton = createNeonButton("CLOSE", cyberFont);
         closeButton.addActionListener(e -> disposeThis());
@@ -38,6 +46,8 @@ public class Settings extends JDialog {
 
         panel.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
         add(panel);
+
+    
     }
 
     private JButton createNeonButton(String text, Font font) {

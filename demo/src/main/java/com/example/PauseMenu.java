@@ -1,6 +1,15 @@
 package com.example;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class PauseMenu extends JDialog {
 
@@ -41,7 +50,7 @@ public class PauseMenu extends JDialog {
         restartButton.setContentAreaFilled(false);   
         restartButton.setForeground(Color.WHITE);
         restartButton.addActionListener(e -> { 
-            SoundManager.playSound("GameMenu");
+            SoundManager.playSound("PlayGame");
             game.restartGame();
             dispose();  
         });
@@ -55,7 +64,7 @@ public class PauseMenu extends JDialog {
         homeButton.setContentAreaFilled(false);   
         homeButton.setForeground(Color.WHITE);
         homeButton.addActionListener(e -> {
-            SoundManager.playSound("GameMenu");
+            SoundManager.playSound("PlayGame");
             parent.dispose();
             game.stopTimer();
             GameMenu gameMenu = new GameMenu();

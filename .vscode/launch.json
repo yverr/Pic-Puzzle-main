@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CustomDialog",
+            "request": "launch",
+            "mainClass": "com.example.CustomDialog",
+            "projectName": "demo"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "com.example.Main",
